@@ -2,29 +2,29 @@ package com.example.moontoon.Repositories
 
 import androidx.annotation.WorkerThread
 import com.example.moontoon.Dao_Interfaces.Items_Data_BaseDao
-import com.example.moontoon.Data_Entities.Item
+import com.example.moontoon.Data_Entities.Item_Entity
 import kotlinx.coroutines.flow.Flow
 
 class ItemRespository(private val itemDao:Items_Data_BaseDao) {
 
-    val allItems: Flow<List<Item>> = itemDao.getAllItems()
+    val allItems: Flow<List<Item_Entity>> = itemDao.getAllItems()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun insert(item: Item) {
-        itemDao.insert(item)
+    suspend fun insert(itemEntity: Item_Entity) {
+        itemDao.insert(itemEntity)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun update(item: Item) {
-        itemDao.update(item)
+    suspend fun update(itemEntity: Item_Entity) {
+        itemDao.update(itemEntity)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun delete(item: Item) {
-        itemDao.delete(item)
+    suspend fun delete(itemEntity: Item_Entity) {
+        itemDao.delete(itemEntity)
     }
 
     @Suppress("RedundantSuspendModifier")

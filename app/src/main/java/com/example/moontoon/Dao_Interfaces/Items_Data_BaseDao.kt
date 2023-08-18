@@ -5,24 +5,24 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.moontoon.Data_Entities.Item
+import com.example.moontoon.Data_Entities.Item_Entity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface Items_Data_BaseDao {
     @Insert
-    fun insert(item: Item)
+    fun insert(itemEntity: Item_Entity)
 
     @Update
-    fun update(item: Item)
+    fun update(itemEntity: Item_Entity)
 
     @Query("DELETE FROM ITEMS_TABLE")
     fun clear()
 
     @Query("SELECT * FROM items_table " +
            "ORDER BY priority")
-    fun getAllItems(): Flow<List<Item>>
+    fun getAllItems(): Flow<List<Item_Entity>>
 
     @Delete
-    fun delete(item: Item)
+    fun delete(itemEntity: Item_Entity)
 }

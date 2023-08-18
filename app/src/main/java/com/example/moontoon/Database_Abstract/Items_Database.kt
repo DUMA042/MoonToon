@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.moontoon.Dao_Interfaces.Items_Data_BaseDao
-import com.example.moontoon.Data_Entities.Item
+import com.example.moontoon.Data_Entities.Item_Entity
 
-@Database(entities = [Item::class],version = 1, exportSchema = false)
+@Database(entities = [Item_Entity::class],version = 1, exportSchema = false)
 abstract class Items_Database: RoomDatabase(){
 
     abstract fun itemDao(): Items_Data_BaseDao
