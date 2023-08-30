@@ -29,11 +29,13 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.moontoon.R
+import com.example.moontoon.viewModel_files.ItemsViewModel
 
 
 @Composable
-fun Todobody(modifier: Modifier=Modifier) {
+fun Todobody(databaseviewmodel: ItemsViewModel = viewModel(), modifier: Modifier=Modifier) {
 
     Box(modifier = modifier.fillMaxSize()) {
 
@@ -111,8 +113,9 @@ fun TodoCardPreview(){
     TodoCard()
 }
 
+/*
 @Preview
 @Composable
 fun TodobodyPreview(){
     Todobody()
-}
+}*/

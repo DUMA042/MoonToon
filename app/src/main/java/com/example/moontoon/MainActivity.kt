@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalComposeUiApi::class)
+
 package com.example.moontoon
 
 import android.Manifest
@@ -15,12 +17,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
  import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.moontoon.Views.AuthScreen
+import com.example.moontoon.Views.MainScreen
 import com.example.moontoon.ui.theme.MoonToonTheme
 import com.example.moontoon.viewModel_files.ItemsViewModel
 import com.example.moontoon.viewModel_files.NotificationViewModel
@@ -50,7 +55,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Greeting("Android")
+                    MainScreen()
                 }
             }
         }
