@@ -18,6 +18,12 @@ sealed class BottomBarScreen(
             icon = Icons.Default.List
         )
 
+    object ToAdd : BottomBarScreen(
+        route = "To_Add",
+        title = "To Add",
+        icon = Icons.Default.List
+    )
+
         object DoneList : BottomBarScreen(
             route = "Done_List",
             title = "Done",

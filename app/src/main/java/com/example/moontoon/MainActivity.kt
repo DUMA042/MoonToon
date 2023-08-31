@@ -2,12 +2,9 @@
 
 package com.example.moontoon
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,12 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
- import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.moontoon.Views.AuthScreen
 import com.example.moontoon.Views.MainScreen
 import com.example.moontoon.ui.theme.MoonToonTheme
 import com.example.moontoon.viewModel_files.ItemsViewModel
@@ -44,6 +37,9 @@ class MainActivity : ComponentActivity() {
             val myNotify:NotificationViewModel= viewModel()
             val notifyBuilder=myNotify.getNotificationBuilder()
             val _notifyManager=myNotify.getNotificationManager()
+            /**
+            val dbitem=Item_Entity(name="Werrt", description = "THA")
+            myview.insertItem(dbitem)**/
 
 
 

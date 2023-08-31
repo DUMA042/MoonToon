@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "items_table",indices = [Index(value = ["name"],
     unique = true)])
-data class Item_Entity(@PrimaryKey(autoGenerate = true) var uid: Long =0L,
+data class Item_Entity(@PrimaryKey(autoGenerate = true)
+                       var uid: Long =0L,
                        val name: String?,
                        val description: String?,
                        val madeTime: Long= System.currentTimeMillis(),

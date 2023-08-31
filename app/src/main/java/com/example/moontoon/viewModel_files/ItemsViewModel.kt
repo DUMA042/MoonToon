@@ -20,8 +20,14 @@ import javax.inject.Inject
 @HiltViewModel
 class ItemsViewModel @Inject constructor(val itemsRep: ItemRespository): ViewModel() {
 
-
-
+/*
+var number=0
+    fun numberInc(){
+        number++
+    }
+    fun getnumber():Int{
+        return number
+    }*/
 
     val listofitems = itemsRep.allItems
 
