@@ -22,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -67,7 +68,7 @@ fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifie
         composable(route = BottomBarScreen.ToDo.route) {backStackEntry ->
             // Creates a ViewModel from the current BackStackEntry
             // Available in the androidx.hilt:hilt-navigation-compose artifact
-            val viewModel = hiltVieModel<ItemsViewModel>()
+            val viewModel = hiltViewModel<ItemsViewModel>()
             Todobody(viewModel)
         }
         composable(route = BottomBarScreen.ToAdd.route) {backStackEntry ->
@@ -81,7 +82,7 @@ fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifie
             // Creates a ViewModel from the current BackStackEntry
             // Available in the androidx.hilt:hilt-navigation-compose artifact
             val viewModel = hiltViewModel<ItemsViewModel>()
-            DoneTodoScreen(viewModel)
+            DoneTodoScreen(viewModel,modifier)
         }
         composable(route = BottomBarScreen.AboutInfo.route) {
             AboutScreen()
@@ -94,7 +95,7 @@ fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifie
 fun MainScreen(modifier:Modifier=Modifier){
     val navController = rememberNavController()
 
-    Scaffold(floatingActionButton = {     LargeFloatingActionButton(
+    Scaffold(floatingActionButton = {     FloatingActionButton(
         onClick =  { navController.navigate("To_Add") {
             popUpTo(navController.graph.findStartDestination().id)
             launchSingleTop = true
@@ -108,7 +109,8 @@ fun MainScreen(modifier:Modifier=Modifier){
             contentDescription = "Navigation Icon"
         )
 
-    }},bottomBar = { BottomBar(navController = navController) }) {innerpadding ->
+    }
+    },bottomBar = { BottomBar(navController = navController) }) { innerpadding ->
         BottomNavGraph1(navController = navController,Modifier.padding(innerpadding.calculateTopPadding()))
 
     }

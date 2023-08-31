@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -63,16 +64,14 @@ import kotlinx.coroutines.withTimeoutOrNull
 @Composable
 fun Todobody(databaseviewmodel: ItemsViewModel, modifier: Modifier=Modifier) {
  val dbitem=databaseviewmodel.listofitems.collectAsState(initial = emptyList())
- var go_to_new_list by remember {
-     mutableStateOf(true)
- }
+ val _dbitem = dbitem.value.filter { it.doneTime==it.madeTime }
     LazyColumn(
         verticalArrangement = Arrangement.SpaceBetween,
         contentPadding = PaddingValues(horizontal = 16.dp),
         modifier = modifier
     ) {
         items(
-            items = dbitem.value,
+            items = _dbitem,
             /**
              * Use key param to define unique keys representing the items in a mutable list,
              * instead of using the default key (list position). This prevents unnecessary
@@ -82,6 +81,7 @@ fun Todobody(databaseviewmodel: ItemsViewModel, modifier: Modifier=Modifier) {
         ) { task ->
             ElevatedCardExample(databaseviewmodel,task)
     }
+        item{Spacer(modifier = Modifier.padding(35.dp))}
     //ElevatedCardExample()
 
 
@@ -160,7 +160,8 @@ fun ElevatedCardExample(databaseviewmodel: ItemsViewModel,item_entity:Item_Entit
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(29.dp)
-                        .clip(CircleShape).clickable {}
+                        .clip(CircleShape).clickable {item_entity.madeTime=System.currentTimeMillis()
+                                                      databaseviewmodel.updateItem(item_entity)}
                 )
                 Image(
                     painter = painterResource(R.drawable.image_cancel),

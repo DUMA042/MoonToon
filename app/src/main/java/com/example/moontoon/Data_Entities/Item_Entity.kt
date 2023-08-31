@@ -10,7 +10,7 @@ data class Item_Entity(@PrimaryKey(autoGenerate = true)
                        var uid: Long =0L,
                        val name: String?,
                        val description: String?,
-                       val madeTime: Long= System.currentTimeMillis(),
+                       var madeTime: Long= System.currentTimeMillis(),
                        var doneTime:Long= madeTime,
                        var priority: Int=-1)
 
