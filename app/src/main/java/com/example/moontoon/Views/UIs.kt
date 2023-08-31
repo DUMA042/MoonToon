@@ -67,7 +67,7 @@ fun Todobody(databaseviewmodel: ItemsViewModel, modifier: Modifier=Modifier) {
      mutableStateOf(true)
  }
     LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.SpaceBetween,
         contentPadding = PaddingValues(horizontal = 16.dp),
         modifier = modifier
     ) {

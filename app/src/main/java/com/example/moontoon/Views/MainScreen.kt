@@ -41,7 +41,7 @@ import com.example.moontoon.viewModel_files.ItemsViewModel
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifier) {
-Box(modifier = modifier.fillMaxSize()) {
+/*Box(modifier = modifier.fillMaxSize()) {
     LargeFloatingActionButton(
         onClick =  { navController.navigate("To_Add") {
             popUpTo(navController.graph.findStartDestination().id)
@@ -58,7 +58,7 @@ Box(modifier = modifier.fillMaxSize()) {
         )
 
     }
-}
+}*/
 
     NavHost(
         navController = navController,
@@ -67,7 +67,7 @@ Box(modifier = modifier.fillMaxSize()) {
         composable(route = BottomBarScreen.ToDo.route) {backStackEntry ->
             // Creates a ViewModel from the current BackStackEntry
             // Available in the androidx.hilt:hilt-navigation-compose artifact
-            val viewModel = hiltViewModel<ItemsViewModel>()
+            val viewModel = hiltVieModel<ItemsViewModel>()
             Todobody(viewModel)
         }
         composable(route = BottomBarScreen.ToAdd.route) {backStackEntry ->
@@ -91,12 +91,28 @@ Box(modifier = modifier.fillMaxSize()) {
 
 
 @Composable
-fun MainScreen(){
+fun MainScreen(modifier:Modifier=Modifier){
     val navController = rememberNavController()
-   Scaffold(bottomBar = { BottomBar(navController = navController) }) {innerpadding ->
-       BottomNavGraph1(navController = navController,Modifier.padding(innerpadding))
 
-   }
+    Scaffold(floatingActionButton = {     LargeFloatingActionButton(
+        onClick =  { navController.navigate("To_Add") {
+            popUpTo(navController.graph.findStartDestination().id)
+            launchSingleTop = true
+        }
+        },
+        modifier = Modifier
+
+    ) {
+        Icon(
+            imageVector = Icons.Default.AddCircle,
+            contentDescription = "Navigation Icon"
+        )
+
+    }},bottomBar = { BottomBar(navController = navController) }) {innerpadding ->
+        BottomNavGraph1(navController = navController,Modifier.padding(innerpadding.calculateTopPadding()))
+
+    }
+
 
 }
 

@@ -1,6 +1,7 @@
 package com.example.moontoon.Views
 
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -35,6 +36,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -53,7 +55,7 @@ import com.example.moontoon.viewModel_files.ItemsViewModel
 @Composable
 fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController, ) {
 
-
+    val context = LocalContext.current
     var emailText by remember { mutableStateOf("") }
     var passwordtext by remember { mutableStateOf("") }
     var priorityNumber by remember { mutableStateOf(0) }
@@ -142,6 +144,7 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
 
         Button(
             onClick = { databaseviewmodel.insertItem(Item_Entity(name = emailText, description = passwordtext, priority = priorityNumber))
+                Toast.makeText(context,"To Do Item Created", Toast.LENGTH_LONG).show()
 
             },
             modifier = Modifier

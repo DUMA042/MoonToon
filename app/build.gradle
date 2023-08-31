@@ -69,7 +69,8 @@ dependencies {
 
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    implementation 'androidx.hilt:hilt-navigation:1.1.0-alpha02'
 
 
     //Pemissions
