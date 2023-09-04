@@ -15,6 +15,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +33,12 @@ var number=0
     }*/
 
     val listofitems = itemsRep.allItems
+
+    fun convertTimestampToFormattedDate(timestamp: Long): String {
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val date = Date(timestamp)
+        return dateFormat.format(date)
+    }
 
     fun doitt(itemEntity: Item_Entity){
         viewModelScope.launch {

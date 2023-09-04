@@ -11,15 +11,22 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Brightness2
+import androidx.compose.material.icons.filled.Task
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -41,7 +48,6 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -56,28 +62,41 @@ import com.example.moontoon.viewModel_files.ItemsViewModel
 fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController, ) {
 
     val context = LocalContext.current
-    var emailText by remember { mutableStateOf("") }
-    var passwordtext by remember { mutableStateOf("") }
+    val nameLimit=11
+    var name by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
     var priorityNumber by remember { mutableStateOf(0) }
     val keyboardController = LocalSoftwareKeyboardController.current
     val (focusDetails) = remember { FocusRequester.createRefs() }
 
-    Column() {
+    Column(modifier = Modifier.padding(top=15.dp)) {
 
-       Button(onClick = { navController.navigate("To_Do") {
-           popUpTo(navController.graph.findStartDestination().id)
-           launchSingleTop = true
-       }
-       } ) {
-           Text(text = "Close")
-       }
+        Icon(
+            imageVector = Icons.Default.ArrowBack,
+            modifier = Modifier.padding(10.dp).clickable { navController.navigate("To_Do") {
+                popUpTo(navController.graph.findStartDestination().id)
+                launchSingleTop = true
+            }
+            },
+            contentDescription = "Cancel"
+        )
+
 
         OutlinedTextField(
-            value = emailText,
+            value = name,
             modifier = Modifier
                 .padding(top = 7.dp)
                 .align(Alignment.CenterHorizontally),
-            onValueChange = { emailText = it },
+            onValueChange = { if(name.length<nameLimit){name = it }},
+            leadingIcon = {Icon(
+                imageVector = Icons.Default.Brightness2,
+                modifier = Modifier.clickable { navController.navigate("To_Do") {
+                    popUpTo(navController.graph.findStartDestination().id)
+                    launchSingleTop = true
+                }
+                },
+                contentDescription = "Task"
+            )},
             label = { Text("Name", fontSize = 20.sp) },
             placeholder = { Text("Wash Cloths") },
             keyboardOptions = KeyboardOptions(
@@ -88,13 +107,23 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
         )
 
         OutlinedTextField(
-            value = passwordtext,
-            modifier = Modifier
+            value = description,
+            modifier = Modifier.widthIn(max=3300.dp)
                 .padding(top = 7.dp)
                 .align(Alignment.CenterHorizontally)
                 .focusRequester(focusDetails),
-            onValueChange = { passwordtext = it },
+            onValueChange = { description = it },
             label = { Text("Details", fontSize = 20.sp) },
+            maxLines = 5,
+            leadingIcon = {Icon(
+                imageVector = Icons.Default.Task,
+                modifier = Modifier.clickable { navController.navigate("To_Do") {
+                    popUpTo(navController.graph.findStartDestination().id)
+                    launchSingleTop = true
+                }
+                },
+                contentDescription = "Task"
+            )},
             placeholder = { Text("I need to wash all my ....") },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -112,7 +141,8 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(35.dp)
-                    .clip(CircleShape).clickable { priorityNumber=1}
+                    .clip(CircleShape)
+                    .clickable { priorityNumber = 1 }
             )
             Image(
                 painter = painterResource(R.drawable.item_priority2),
@@ -120,7 +150,8 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(35.dp)
-                    .clip(CircleShape).clickable { priorityNumber=2 }
+                    .clip(CircleShape)
+                    .clickable { priorityNumber = 2 }
             )
             Surface(
                 shadowElevation = 9.dp, // play with the elevation values
@@ -132,10 +163,7 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
                     modifier = Modifier
                         .size(35.dp)
                         .clip(CircleShape)
-                        .border(
-                            BorderStroke(4.dp, Color.Yellow),
-                            CircleShape
-                        )
+
                 )
             }
 
@@ -143,8 +171,11 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
         Spacer(modifier = Modifier.padding(3.dp))
 
         Button(
-            onClick = { databaseviewmodel.insertItem(Item_Entity(name = emailText, description = passwordtext, priority = priorityNumber))
+            onClick = { databaseviewmodel.insertItem(Item_Entity(name = name, description = description, priority = priorityNumber))
                 Toast.makeText(context,"To Do Item Created", Toast.LENGTH_LONG).show()
+                name=""
+                description=""
+
 
             },
             modifier = Modifier

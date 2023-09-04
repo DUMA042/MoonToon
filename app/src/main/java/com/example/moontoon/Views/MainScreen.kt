@@ -1,10 +1,14 @@
 package com.example.moontoon.Views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -22,44 +26,37 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Image
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.moontoon.ui.theme.Purple40
+import com.example.moontoon.ui.theme.PurpleGrey80
 import com.example.moontoon.viewModel_files.ItemsViewModel
+import kotlin.math.roundToInt
 
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifier) {
-/*Box(modifier = modifier.fillMaxSize()) {
-    LargeFloatingActionButton(
-        onClick =  { navController.navigate("To_Add") {
-            popUpTo(navController.graph.findStartDestination().id)
-            launchSingleTop = true
-        }
-        },
-        modifier = Modifier
-            .align(Alignment.BottomEnd)
-            .padding(16.dp),
-    ) {
-        Icon(
-            imageVector = Icons.Default.AddCircle,
-            contentDescription = "Navigation Icon"
-        )
-
-    }
-}*/
 
     NavHost(
         navController = navController,
@@ -93,9 +90,26 @@ fun BottomNavGraph1(navController: NavHostController, modifier: Modifier=Modifie
 
 @Composable
 fun MainScreen(modifier:Modifier=Modifier){
+
+
     val navController = rememberNavController()
 
-    Scaffold(floatingActionButton = {     FloatingActionButton(
+
+    Scaffold(  topBar = {
+        TopAppBar(
+            title = {
+                Text(
+                    text = "MoonToon",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = Color.White,
+                )
+            }, backgroundColor = Color(Purple40.value),
+            modifier = Modifier
+                .fillMaxWidth()
+
+        )
+    },floatingActionButton = {  LargeFloatingActionButton(
         onClick =  { navController.navigate("To_Add") {
             popUpTo(navController.graph.findStartDestination().id)
             launchSingleTop = true
@@ -111,7 +125,7 @@ fun MainScreen(modifier:Modifier=Modifier){
 
     }
     },bottomBar = { BottomBar(navController = navController) }) { innerpadding ->
-        BottomNavGraph1(navController = navController,Modifier.padding(innerpadding.calculateTopPadding()))
+        BottomNavGraph1(navController = navController,Modifier.padding(innerpadding))
 
     }
 
@@ -128,9 +142,36 @@ fun BottomBar(navController: NavHostController) {
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+//---------------------------------------------------------
 
+    NavigationBar(containerColor = Purple40,modifier = Modifier.fillMaxWidth()) {
+        screens.forEach { replyDestination ->
+            NavigationBarItem(
+                selected = currentDestination?.hierarchy?.any {
+                    it.route == replyDestination.route
+                } == true,
+                onClick = {
+                    navController.navigate(replyDestination.route) {
+                        popUpTo(navController.graph.findStartDestination().id)
+                        launchSingleTop = true
+                    }
+                },
+                icon = {
+                    Icon(
+                        imageVector = replyDestination.icon,
+                        contentDescription = "ICON"
+                    )
+                }
+            )
+        }
+    }
 
-    BottomNavigation {
+//-------------------------------------------------------
+    /*
+    BottomNavigation(
+        modifier = Modifier
+            .background(MaterialTheme.colors.primary) // Change the background color here
+    ) {
         screens.forEach { screen ->
             AddItem(
                 screen = screen,
@@ -139,6 +180,8 @@ fun BottomBar(navController: NavHostController) {
             )
         }
     }
+
+     */
 }
 
 @Composable
