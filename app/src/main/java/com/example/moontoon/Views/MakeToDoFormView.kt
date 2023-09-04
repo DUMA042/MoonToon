@@ -163,6 +163,7 @@ fun  MakeToDoForm(databaseviewmodel: ItemsViewModel,navController: NavController
                     modifier = Modifier
                         .size(35.dp)
                         .clip(CircleShape)
+                        .clickable { priorityNumber = 3 }
 
                 )
             }
