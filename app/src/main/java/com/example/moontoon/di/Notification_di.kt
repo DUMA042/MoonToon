@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.moontoon.Dao_Interfaces.Items_Data_BaseDao
+import com.example.moontoon.R
 import com.example.moontoon.Repositories.ItemRespository
 import dagger.Module
 import dagger.Provides
@@ -24,6 +25,7 @@ object Notification_di {
     @Provides
     fun provideNotificationBuilder(@ApplicationContext context: Context): NotificationCompat.Builder{
         return NotificationCompat.Builder(context,"NOTIFICATION_CHANNEL_ID")
+            .setSmallIcon(R.drawable.nav_home_select)
             .setContentTitle("TODO")
             .setContentText("You have work to do")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
