@@ -5,10 +5,13 @@ import com.example.moontoon.Dao_Interfaces.Items_Data_BaseDao
 import com.example.moontoon.Data_Entities.Item_Entity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 
 class ItemRespository(private val itemDao:Items_Data_BaseDao) {
 
     val allItems: Flow<List<Item_Entity>> = itemDao.getAllItems()
+
+
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
