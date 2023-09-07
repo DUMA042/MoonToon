@@ -167,21 +167,7 @@ fun BottomBar(navController: NavHostController) {
     }
 
 //-------------------------------------------------------
-    /*
-    BottomNavigation(
-        modifier = Modifier
-            .background(MaterialTheme.colors.primary) // Change the background color here
-    ) {
-        screens.forEach { screen ->
-            AddItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
-        }
-    }
 
-     */
 }
 
 @Composable
@@ -213,8 +199,3 @@ fun RowScope.AddItem(
     )
 }
 
-@Composable
-fun testinghh() {
-    Text("ytht")
-
-}

@@ -12,15 +12,18 @@ import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import com.example.moontoon.Dao_Interfaces.Items_Data_BaseDao
+import com.example.moontoon.Repositories.ItemRespository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.flow.first
 
 @HiltWorker
 class workerDisplayNotfification @AssistedInject constructor(
     @Assisted appContext: Context,
     @Assisted workerParams: WorkerParameters,
     @Assisted private val notificationManager: NotificationManagerCompat,
-    @Assisted private val notificationBuilder: NotificationCompat.Builder
+    @Assisted private val notificationBuilder: NotificationCompat.Builder,
 ) : CoroutineWorker(appContext, workerParams) {
     override suspend fun doWork(): Result {
 
@@ -50,24 +53,10 @@ class workerDisplayNotfification @AssistedInject constructor(
         )
     }
 
-    fun createNotification(): Notification {
-        return notificationBuilder.setContentText("From work Manager").build()
-        /*
-        if (ActivityCompat.checkSelfPermission(
-                applicationContext,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+   fun createNotification(): Notification {
 
-        }
-        notificationManager.notify(1,notificationBuilder.build())*/
+        return notificationBuilder.setContentText("Remember to To your To DO").build()
+
     }
 
 }
