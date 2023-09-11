@@ -52,10 +52,10 @@ MoonToon app helps you keep track of all your activities,giving you the power to
 Include screenshots or images that showcase your app's user interface or functionality. You can embed images like this:
 
 ![Screenshot 1](ImagesGithubReadme/Screenshot_20230911-235543.png)
-![Screenshot 2](MoonToon\ImagesGithubReadme\Screenshot_20230912-000724.png)
-![Screenshot 3](AndroidStudioProjects\MoonToon\ImagesGithubReadme\Screenshot_20230912-000812.png)
-![Screenshot 4](Screenshot_20230912-000848.png)
-![Screenshot 5](C:\Users\BILKAN COMPU\AndroidStudioProjects\MoonToon\ImagesGithubReadme\Screenshot_20230912-001000.png)
+![Screenshot 2](ImagesGithubReadme/Screenshot_20230912-000724.png)
+![Screenshot 3](ImagesGithubReadme/Screenshot_20230912-000812.png)
+![Screenshot 4](ImagesGithubReadme/Screenshot_20230912-000848.png)
+![Screenshot 5](ImagesGithubReadme/Screenshot_20230912-001000.png)
 
 ## Installation
 
