@@ -58,11 +58,10 @@ Include screenshots or images that showcase your app's user interface or functio
 
 Provide instructions on how to install your app. Include prerequisites, dependencies, and any specific steps needed for installation.
 
-` //Hilt
+//Hilt
 implementation("com.google.dagger:hilt-android:2.47")
 implementation 'androidx.hilt:hilt-work:1.0.0'
 kapt("com.google.dagger:hilt-android-compiler:2.44")
-`
 
 
 `//ROOM
