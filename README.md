@@ -56,6 +56,7 @@ Include screenshots or images that showcase your app's user interface or functio
 ![Screenshot 3](ImagesGithubReadme/Screenshot_20230912-000812.png)
 ![Screenshot 4](ImagesGithubReadme/Screenshot_20230912-000848.png)
 ![Screenshot 5](ImagesGithubReadme/Screenshot_20230912-001000.png)
+![Screenshot 6](ImagesGithubReadme/Screenshot_20230912-000938.png)
 
 ## Installation
 
