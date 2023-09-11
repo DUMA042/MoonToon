@@ -111,6 +111,35 @@ Include screenshots or images that showcase your app's user interface or functio
     
     //Workmanager
     def work_version = "2.8.1"
+### For Hilt Implementation for Room
+      ```Kotlin
+         @Module
+        @InstallIn(SingletonComponent::class)
+        object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideItemRepository(itemDao: Items_Data_BaseDao): ItemRespository{
+        return ItemRespository(itemDao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideItemDao(appDatabase:Items_Database): Items_Data_BaseDao{
+        return  appDatabase.itemDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@ApplicationContext context: Context): Items_Database {
+        return Room.databaseBuilder(
+            context.applicationContext,
+            Items_Database::class.java,
+            "word_database"
+        ).build()
+    }
+
+      }
 
     
 ## Usage
