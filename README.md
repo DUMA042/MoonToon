@@ -59,14 +59,16 @@ Include screenshots or images that showcase your app's user interface or functio
 Provide instructions on how to install your app. Include prerequisites, dependencies, and any specific steps needed for installation.
 
 `//Hilt
-implementation("com.google.dagger:hilt-android:2.47")
-implementation 'androidx.hilt:hilt-work:1.0.0'
-kapt("com.google.dagger:hilt-android-compiler:2.44") `
+     implementation("com.google.dagger:hilt-android:2.47")
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+     kapt("com.google.dagger:hilt-android-compiler:2.44") `
 
 
 `//ROOM
-def room_version = "2.5.2"
-implementation "androidx.room:room-ktx:$room_version" `
+ `
+
+    def room_version = "2.5.2"
+    implementation "androidx.room:room-ktx:$room_version"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
@@ -83,6 +85,38 @@ implementation "androidx.room:room-ktx:$room_version" `
 
     // optional - Guava support for Room, including Optional and ListenableFuture
     implementation "androidx.room:room-guava:$room_version"
+
+    //Hilt
+     implementation("com.google.dagger:hilt-android:2.47")
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+      //Notification
+    def core_version = "1.10.1"
+    implementation "androidx.core:core-ktx:$core_version"
+
+    //Permissions
+    implementation "com.google.accompanist:accompanist-permissions:0.21.1-beta"
+
+    //Material3
+    implementation "androidx.compose.material3:material3:1.1.1"
+    implementation "androidx.compose.material3:material3-window-size-class:1.1.1"
+
+    //Navigation
+    def nav_version = "2.7.1"
+
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    //Pemissions
+    def activity_version = "1.7.2"
+    def fragment_version = "1.6.1"
+    implementation("androidx.activity:activity-ktx:$activity_version")
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    
+    //Workmanager
+    def work_version = "2.8.1"
 
     
 ## Usage
