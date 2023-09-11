@@ -112,7 +112,7 @@ Include screenshots or images that showcase your app's user interface or functio
     //Workmanager
     def work_version = "2.8.1"
 ### For Hilt Implementation for Room
-      ```Kotlin
+ ```Kotlin
          @Module
         @InstallIn(SingletonComponent::class)
         object AppModule {
@@ -140,27 +140,38 @@ Include screenshots or images that showcase your app's user interface or functio
     }
 
       }
-
+```
     
 ## Usage
 
-Explain how to use your app. Provide examples, code snippets, or step-by-step guides to help users understand its functionality.
+The app Makes use of Navigation to transition throug the application Go to the about page of the app for full details.
 
-## Contributing
 
-If you welcome contributions from others, describe how they can contribute to your project. Include guidelines for code contributions, bug reports, and feature requests.
 
 ## License
 
-Specify the license under which your project is distributed. Include a link to the full license text if applicable. For example, if you're using the MIT License:
+```
+Copyright 2022 The Android Open Source Project
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+```
 
 ## Acknowledgments
-
-Give credit to individuals, libraries, or resources that have been helpful or influential in your project.
-
-- Mention any open-source libraries or frameworks used.
-- Thank contributors or collaborators who helped develop the project.
-- Acknowledge any sources of inspiration or reference materials.
+  ### Icon8.com
+  ### Android Docs
+  ### [vsten](https://vtsen.hashnode.dev/)https://vtsen.hashnode.dev/
+  ### Stevdza-San @Youtube
+  ### Philipp Lackner @ youtube
+  
 
