@@ -32,7 +32,7 @@ MoonToon app helps you keep track of all your activities,giving you the power to
 
 ## Features
 
-###Key Features of MoonToon:
+### Key Features of MoonToon:
 
 - **Task Management:** Create, edit, and organize your tasks with ease.
 
@@ -64,9 +64,10 @@ implementation 'androidx.hilt:hilt-work:1.0.0'
 kapt("com.google.dagger:hilt-android-compiler:2.44")
 `
 
+
 `//ROOM
 def room_version = "2.5.2"
-implementation "androidx.room:room-ktx:$room_version"`
+implementation "androidx.room:room-ktx:$room_version" `
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
